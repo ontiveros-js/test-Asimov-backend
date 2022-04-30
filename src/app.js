@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.json())
 
 const corsOptions ={
-    origin:'https://crud-mern-ontiveros.herokuapp.com', 
+    origin:'https://crud-mern-ontiveros.herokuapp.com:35510', 
     credentials:true,
     optionSuccessStatus:200
 }
