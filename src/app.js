@@ -18,7 +18,6 @@ const corsOptions ={
 app.use(cors(corsOptions));
 
 //ROUTERS
-app.use("/api/users", require("./routers/users"))
 app.use("/api/notes", require("./routers/notes"))
 
 module.exports = app
