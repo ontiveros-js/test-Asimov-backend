@@ -7,7 +7,11 @@ app.set("port", process.env.PORT || 3001)
 
 //MIDLEWARE
 
-app.use(cors())
+const corsOptions = {
+
+}
+
+app.use(cors({origin: "https://ontiveros-js.github.io/crud-mern-ontiveros"}))
 app.use(express.json())
 
 // const corsOptions ={
