@@ -7,10 +7,8 @@ app.set("port", process.env.PORT || 3001)
 
 //MIDLEWARE
 
-const corsOptions = {
 
-}
-const whiteList = ["https://ontiveros-js.github.io/crud-mern-ontiveros:80"]
+const whiteList = ["https://ontiveros-js.github.io/crud-mern-ontiveros"]
 app.use(cors({origin: whiteList}))
 app.use(express.json())
 
