@@ -10,8 +10,8 @@ app.set("port", process.env.PORT || 3001)
 const corsOptions = {
 
 }
-
-app.use(cors({origin: "https://ontiveros-js.github.io/crud-mern-ontiveros"}))
+const whiteList = ["https://ontiveros-js.github.io/crud-mern-ontiveros"]
+app.use(cors({origin: whiteList}))
 app.use(express.json())
 
 // const corsOptions ={
