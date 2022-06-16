@@ -1,22 +1,28 @@
 const AppointmentCtrl = {};
 const AppointmentModel = require("../models/Appointment");
 
-AppointmentCtrl.getAppointments = async (req, res) => {
-  const appointments = await AppointmentModel.find();
-  res.json(appointments);
-};
-
 AppointmentCtrl.createAppointment = async (req, res) => {
   const { nombre, apellido, correo, fecha, hora } = req.body;
-  const newappointment = new AppointmentModel({
-    nombre,
-    apellido,
-    correo,
-    fecha,
-    hora,
+
+  const verification = await AppointmentModel.find({
+    fecha: fecha,
+    nombre: nombre,
+    apellido: apellido,
   });
-  await newappointment.save();
-  res.json(req.body);
+
+  if (verification.length) {
+    res.status(202).json();
+  } else {
+    const newappointment = new AppointmentModel({
+      nombre,
+      apellido,
+      correo,
+      fecha,
+      hora,
+    });
+    await newappointment.save();
+    res.json(req.body);
+  }
 };
 
 AppointmentCtrl.updateAppointment = async (req, res) => {
@@ -40,9 +46,8 @@ AppointmentCtrl.deleteAppointment = async (req, res) => {
 };
 
 AppointmentCtrl.getOneAppointment = async (req, res) => {
-  console.log(req.params.d + "/" + req.params.m + "/" + req.params.y);
   const oneAppointment = await AppointmentModel.find({
-    fecha: req.params.d + "/" + req.params.m + "/" + req.params.y,
+    fecha: req.params.id,
   });
   res.json(oneAppointment);
 };

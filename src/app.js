@@ -9,7 +9,7 @@ app.set("port", process.env.PORT || 3001);
 
 // const whiteList = ["https://ontiveros-js.github.io"]{origin: whiteList}
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ origin: process.env.WHITE_LIST }));
 
 //ROUTERS
 app.use("/api/appointment", require("./routers/appointment"));
